@@ -1,0 +1,33 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="{% static '/css/foundation.min.css' %}"> 
+        <link rel="stylesheet" href="{% static '/css/app.css' %}">
+
+
+
+        <title>
+           Autofirma
+        </title>
+    </head>
+
+
+<body>
+	
+       {% block content %} 
+            
+       {% endblock content %}
+
+        <script src="{% static 'js/vendor/jquery.js' %}"></script>
+        <script src="{% static 'js/vendor/what-input.js' %}"></script>
+        <script src="{% static 'js/vendor/foundation.min.js' %}"></script>
+	  
+
+        
+    </body>
+</html>

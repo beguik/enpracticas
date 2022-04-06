@@ -1,0 +1,13 @@
+#principal{
+	margin: auto;
+	margin-top: 7em;
+	border-radius: 20px;
+}
+#titulo{
+	background-color: teal; 
+	color: white;
+}
+#formulario{
+
+	margin:2em;
+}
