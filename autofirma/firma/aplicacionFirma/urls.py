@@ -7,6 +7,7 @@ from django.contrib import admin
 
 urlpatterns =[ 
 	path('', views.home, name="Inicio"),
+	path('datos', views.datos, name="Datos"),
 
 ]
 

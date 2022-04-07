@@ -1,34 +1,70 @@
 {% extends "plantilla.html" %}
 {% block content %}
 
-<div id="principal" class="card" style="width: 500px;">
+<div id="principal" class="card" style="width: 75%;">
   		<div id="titulo" class="card-divider " >
     		<div class="card-section">
-    			<p class="text-center">Bienvenid@
+    			<p class="text-center">Tu opinión es IMPORTANTE, cuéntanosla: 
     			</p>
     		</div>	
   		</div>
+
   		<div class="card-section">
-  			<h4 class="text-center">¿Es tu primera vez?
-  			</h4>
-  			<p class="text-center">Rellena este formulario para conocer tus datos:</p>
-  		</div>
+  			<form action="" enctype="multipart/form-data" method="POST">
+                {%csrf_token %}
+								
+								<div class="grid-container">
+					    		<div class="grid-x grid-padding-x">
+					    			<div class="medium-12 cell">
+					    				<label>Nombre:
+												{{form.nombre}}
+											</label>
+										</div>
+	               	</div>
+	              </div>
+								
+								<div class="grid-container">
+								    <div class="grid-x grid-padding-x">
+					  				    <div class="medium-6 cell">
+					        				<label>Primer Apellido:
+					          					{{form.apellido1}}
+					        				</label>
+					      				</div>
+					      				<div class="medium-6 cell">
+					        				<label>Segundo Apellido:
+					          					{{form.apellido2}}
+					        				</label>
+					      				</div>
+					    			</div>
+					  		</div>							
+								    <div class="grid-container" style="width:50%">
 
-		<div id="formulario"class="card">
-			 
-
-		</div>
-
-		
-
-		<div class="card-section">
-  			<h4 class="text-center">¿Has estado aquí antes?
-  			</h4>
-  			<p class="text-center">Facilitanos tu DNI y te buscamos</p>
-  		</div>
-
-		<div id="formulario"class="card">....formulario....
-
-		</div>
+					  				    <div class="medium-6 cell">
+					        				<label>DNI:
+					          					{{form.dni}}
+					        				</label>
+					      				</div>
+					    			
+					  				</div>
+								<hr/>
+								<div class="grid-container">
+								    <div class="grid-x grid-padding-x">
+					  				    <div class="medium-12 cell">
+					        				<label>Cuéntanos tu opinión: 
+																{{form.formulario}}
+													</label>
+												</div>
+										</div>
+ 								</div>
+								<center>
+						  
+										<button class="button primary" type="submit">Enviar</button>
+								
+								</center>
+        </form>	 
+			</div>
 </div>
 {% endblock %}
+
+
+
