@@ -1,5 +1,18 @@
 {% extends "plantilla.html" %}
 {% block content %}
-datos
+<div id="principal" class="card" style="width: 75%;">
+  		<div id="titulo" class="card-divider " >
+    		<div class="card-section">
+    			<p class="text-center">Hemos recogido tu opinión, ¿que deseas hacer ahora?
+    			</p>
+    		</div>	
+  		</div>
+		<hr/>
+  		<div style="margin:auto">
+			<button class="button primary" id="enviar" type="submit" style="background:#008080; border-radius:5px"><i class="fas fa-reply"></i>&nbsp;&nbsp;Volver</button>
+			<button class="button primary" id="enviar" type="submit"style="background:#008080; border-radius:5px">Generar un PDF</button>
+						
+  		</div>
+  	</div>
 
 {% endblock %}

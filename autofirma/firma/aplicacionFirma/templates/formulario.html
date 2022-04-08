@@ -1,7 +1,6 @@
 {% extends "plantilla.html" %}
 {% block content %}
 
-
 <div id="principal" class="card" style="width: 75%;">
   		<div id="titulo" class="card-divider " >
     		<div class="card-section">
@@ -54,7 +53,7 @@
 					          					{{form.dni}}
 					        				</label>
 					        				<p id="errores">
-												<span id="dni"></span>
+												<span id="dni" style="font-size:10px;color: #FF0000;;">El formato del DNI no ha sido correcto, por favor intentelo de nuevo</span>
 											</p>
 					      				</div>
 					    			
@@ -77,6 +76,7 @@
         </form>	 
 			</div>
 </div>
+
 {% endblock %}
 
 

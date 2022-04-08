@@ -5,7 +5,7 @@ let apellido2 = document.getElementById("id_apellido2");
 let dni = document.getElementById("id_dni");
 let texto = document.getElementById("id_formulario");
 let enviar=document.getElementById("enviar");
-
+let alerta=document.getElementById("errorFormulario");
 
 
 window.addEventListener("load", () => {
@@ -15,6 +15,7 @@ window.addEventListener("load", () => {
 	apellido1.addEventListener("blur", validarApe1);
 	apellido2.addEventListener("focusout", validarApe2);
 	dni.addEventListener("blur", validarDni);
+	
 
 })
 

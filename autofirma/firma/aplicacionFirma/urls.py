@@ -7,10 +7,7 @@ from django.contrib import admin
 
 urlpatterns =[ 
 	path('', views.home, name="Inicio"),
+	path('formulario/', views.formulario, name="Formulario"),
 	path('datos', views.datos, name="Datos"),
 
 ]
-
-
-
-
