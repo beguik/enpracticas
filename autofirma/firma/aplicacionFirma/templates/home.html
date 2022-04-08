@@ -15,10 +15,13 @@
 								
 								<div class="grid-container">
 					    		<div class="grid-x grid-padding-x">
-					    			<div class="medium-12 cell">
+					    			<div class="medium-12 cell" id="nombre">
 					    				<label>Nombre:
 												{{form.nombre}}
 											</label>
+											<p id="errores">
+												<span id="errorNombre"></span>
+											</p>
 										</div>
 	               	</div>
 	              </div>
@@ -29,11 +32,17 @@
 					        				<label>Primer Apellido:
 					          					{{form.apellido1}}
 					        				</label>
+					        				<p id="errores">
+												<span id="errorAp1"></span>
+											</p>
 					      				</div>
 					      				<div class="medium-6 cell">
 					        				<label>Segundo Apellido:
-					          					{{form.apellido2}}
+					          					<div id='app'>{{form.apellido2}}</div>
 					        				</label>
+					        				<p id="errores">
+												<span id="errorAp2"></span>
+											</p>
 					      				</div>
 					    			</div>
 					  		</div>							
@@ -43,13 +52,16 @@
 					        				<label>DNI:
 					          					{{form.dni}}
 					        				</label>
+					        				<p id="errores">
+												<span id="dni"></span>
+											</p>
 					      				</div>
 					    			
 					  				</div>
 								<hr/>
 								<div class="grid-container">
 								    <div class="grid-x grid-padding-x">
-					  				    <div class="medium-12 cell">
+					  				    <div class="medium-12 cell" >
 					        				<label>Cuéntanos tu opinión: 
 																{{form.formulario}}
 													</label>
@@ -58,7 +70,7 @@
  								</div>
 								<center>
 						  
-										<button class="button primary" type="submit">Enviar</button>
+										<button class="button primary" id="enviar" type="submit">Enviar</button>
 								
 								</center>
         </form>	 
