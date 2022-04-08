@@ -18,8 +18,18 @@ def home(request):
 			if validarDni(dni):
 				nuevo=Usuario(dni=dni,nombre=nombre, apellido1=apellido2, apellido2=apellido2)
 				nuevo.save()
-				Formulario.objects.create(texto='texto', usuario=nuevo)
-				return redirect('Datos')
+				Formulario.objects.create(texto=texto, usuario=nuevo)
+				usuario=Usuario.objects.get(dni=dni)
+				contador=Formulario.objects.count()
+				formularios=Formulario.objects.get(id_formulario=contador)
+			
+				#borrador=Formulario.objects.order_by('id_formulario').last()
+				#form=Formulario.objects.get(id_formulario=borrador)
+				print(usuario)
+				print('pasa')
+			
+				
+				return render(request,'datos.html',{'usuario':usuario, 'contador':contador, 'formularios':formularios})
 			else: 
 				
 				return redirect('Formulario')
@@ -46,7 +56,10 @@ def formulario(request):
 				nuevo=Usuario(dni=dni,nombre=nombre, apellido1=apellido2, apellido2=apellido2)
 				nuevo.save()
 				Formulario.objects.create(texto='texto', usuario=nuevo)
-				return redirect('Datos')
+				usuario=Usuario.objects.get(dni=dni)
+				print(usuario)
+				print('pasa')
+				return render(request,'datos.html',{'usuario':usuario})
 			else: 
 				
 				return redirect('Formulario')
@@ -60,6 +73,10 @@ def formulario(request):
 
 def datos(request):
 	
+
+
+
+
 	return render(request,"datos.html")
 
 
