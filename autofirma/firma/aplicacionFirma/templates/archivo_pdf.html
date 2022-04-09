@@ -1,0 +1,42 @@
+{% load static %}
+
+<!doctype html>
+<html lang="es">
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Su opinion en PDF</title>
+    <link rel="stylesheet" href="{% static '/css/foundation.min.css' %}"> 
+    <link rel="stylesheet" href="{% static '/css/app.css' %}">
+    <style>
+        @page {
+            size: "A4";
+            margin: 1.0cm 1.5cm 3.5cm 1.5cm;
+        }
+        body {
+            width: 100% !important;
+            height: 100%;
+            background: #fff;
+            color: black;
+            font-size: 100%;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none; 
+        }
+    </style>
+</head>
+<body>
+
+<img src="{% static 'media/logo_tangram.jpg'%}" style="width: 100px"/>
+
+<div style="padding-top: 25%; padding-left:10% ;">
+    Estimado {{usuario.nombre|capfirst}}, {{usuario.apellido1|capfirst}}{{usuario.apellido2|capfirst}},<br/>
+</div>
+<div style="padding-left: 10%;">A continuación, recogemos el texto de su solicitud:</div>
+
+<div style="padding-top:5%; padding-left: 10%;padding-right: 10%"><i>"{{formularios.texto}}"</i></div>
+<div style="padding-top: 5%;padding-left: 10%;">Le agracecemos su solicitud, atentamente, con fecha {{formularios.created|date:'d-M-Y'}} </div>
+<div style="padding-top: 25%;float:right;"><img src="{% static 'media/logo_tangram.jpg'%}" style="width: 100px"/></div>
+</body>
+</html>

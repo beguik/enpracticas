@@ -1,4 +1,8 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from weasyprint.text.fonts import FontConfiguration
 from aplicacionFirma.models import *
 from aplicacionFirma.forms import *
 
@@ -21,15 +25,8 @@ def home(request):
 				Formulario.objects.create(texto=texto, usuario=nuevo)
 				usuario=Usuario.objects.get(dni=dni)
 				contador=Formulario.objects.count()
-				formularios=Formulario.objects.get(id_formulario=contador)
-			
-				#borrador=Formulario.objects.order_by('id_formulario').last()
-				#form=Formulario.objects.get(id_formulario=borrador)
-				print(usuario)
-				print('pasa')
-			
-				
-				return render(request,'datos.html',{'usuario':usuario, 'contador':contador, 'formularios':formularios})
+				formularios=Formulario.objects.get(id_formulario=contador)			
+				return render(request,'datos.html',{'usuario':usuario, 'formularios':formularios})
 			else: 
 				
 				return redirect('Formulario')
@@ -55,11 +52,11 @@ def formulario(request):
 			if validarDni(dni):
 				nuevo=Usuario(dni=dni,nombre=nombre, apellido1=apellido2, apellido2=apellido2)
 				nuevo.save()
-				Formulario.objects.create(texto='texto', usuario=nuevo)
+				Formulario.objects.create(texto=texto, usuario=nuevo)
 				usuario=Usuario.objects.get(dni=dni)
-				print(usuario)
-				print('pasa')
-				return render(request,'datos.html',{'usuario':usuario})
+				contador=Formulario.objects.count()
+				formularios=Formulario.objects.get(id_formulario=contador)			
+				return render(request,'datos.html',{'usuario':usuario, 'formularios':formularios})
 			else: 
 				
 				return redirect('Formulario')
@@ -71,13 +68,27 @@ def formulario(request):
 	return render(request,"formulario.html",{"form":form},)
 
 
-def datos(request):
+#def datos(request):
 	
+#	return render(request,"datos.html")
 
 
+def exportarPdf(request,id):
+
+	formularios=Formulario.objects.get(id_formulario=id)
+	usuario=Usuario.objects.get(dni=formularios.usuario_id)	
 
 
-	return render(request,"datos.html")
+	contexto={'formularios':formularios, 'usuario':usuario}
+	html=render_to_string('archivo_pdf.html',contexto)
+	response=HttpResponse(content_type="application/pdf")
+	response["Content-Disposition"]="inline; archivo.pdf"
+
+	font_config=FontConfiguration()
+	HTML(string=html, base_url=request.build_absolute_uri()).write_pdf(response, font_config=font_config)
+	return response
+
+
 
 
 
@@ -93,10 +104,9 @@ def validarDni(dni):
 		cl=clave[modulo:modulo+1]
 		if(letra!=cl):
 			return False
-			print("hola1")
 		else:
 			return True
-			print("hola2")
+			
 
 
 
