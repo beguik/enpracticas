@@ -3,33 +3,29 @@
 <div id="principal" class="card" style="width: 75%;">
   		<div id="titulo" class="card-divider " >
     		<div class="card-section">
-    			<p class="text-center">Gracias por su opinión {{usuario.nombre|capfirst}}, hemos recogido su opinión:
+    			<p class="text-center">Gracias por su participación {{usuario.nombre|capfirst}}, hemos recogido su opinión:
     			</p>
     		</div>	
   		</div>
 		<hr/>
-
-  		<div style="margin:auto">
+  		<div style="width:70%;text-align:justify; margin: auto">
   			<i>"{{formularios.texto}}"</i><br/> <br/>
+		</div>
   			<p style="text-align:center">¿Que desea hacer ahora?</p>
 				<hr/>
-
+		<div style="width:35%; margin: auto">
 			<a href="{% url 'Inicio'%}"> 
 				<button class="button"style="background:#008080; border-radius:5px"><i class="fas fa-reply"></i>&nbsp;&nbsp;Volver</button>
 			</a>
-
-			<a href="#"> 
-			<button class="button" style="background:#008080; border-radius:5px"><i class="fas fa-check"></i>&nbsp;&nbsp;Verificar</button>
-			<a href="#"> 
-			<button class="button" style="background:#008080; border-radius:5px"><i class="fas fa-eraser"></i>&nbsp;&nbsp;Borrar</button>
-
-
+			<a href="{% url 'Confirmar' formularios.id_formulario %}"> 
+				<button class="button" style="background:#008080; border-radius:5px"><i class="fas fa-check"></i>&nbsp;&nbsp;Confirmar</button>
+			</a>
+			<a href="{% url 'Eliminar' formularios.id_formulario %}"> 
+				<button class="button" style="background:#AF2103; border-radius:5px"><i class="fas fa-eraser"></i>&nbsp;&nbsp;Borrar</button>
+			</a>
+		</div>
 
 			<hr/>
-			<a href="{% url 'Pdf' formularios.id_formulario %}"> 
-			<button class="button" style="background:#008080; border-radius:5px"><i class="fas fa-file-pdf"> </i>&nbsp;&nbsp;Generar un PDF</button>
-			<button class="button " style="background:#008080; border-radius:5px">Otras Opciones
-			</button>
 						
   		</div>
   	</div>

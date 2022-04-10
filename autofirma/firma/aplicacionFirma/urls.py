@@ -8,8 +8,9 @@ from django.contrib import admin
 urlpatterns =[ 
 	path('', views.home, name="Inicio"),
 	path('formulario/', views.formulario, name="Formulario"),
-	#path('datos', views.datos, name="Datos"),
 	path('pdf/<int:id>', views.exportarPdf, name="Pdf"),
+	path('confirmar/<int:id>', views.confirmar, name="Confirmar"),
+	path('eliminar/<int:id>', views.eliminar, name="Eliminar"),
 ]
 
 

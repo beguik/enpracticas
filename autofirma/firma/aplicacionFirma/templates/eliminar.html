@@ -1,0 +1,23 @@
+{% extends "plantilla.html" %}
+{% block content %}
+<div id="principal" class="card" style="width: 75%;">
+  		<div id="titulo" class="card-divider " >
+    		<div class="card-section">
+    			<p class="text-center">{{usuario.nombre|capfirst}}, ¿está seguro de querer eliminar este registro?
+    			</p>
+    		</div>	
+  		</div>
+  		<hr/>
+  		<div style="width:70%;text-align:justify; margin: auto">
+  			<i>"{{formulario.texto}}"</i><br/> <br/>
+		</div>
+		<div style="margin:auto">
+			<form action="" enctype="multipart/form-data" method="POST">
+                {%csrf_token %}
+					<a href="{% url 'Eliminar' formulario.id_formulario %}"> 
+						<button class="button" style="background:#AF2103; border-radius:5px" type="submit"><i class="fas fa-eraser"></i>&nbsp;&nbsp;Borrar</button>
+					</a>
+			</form>
+		</div>
+</div>
+{% endblock %}

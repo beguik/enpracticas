@@ -1,0 +1,25 @@
+{% extends "plantilla.html" %}
+{% block content %}
+<div id="principal" class="card" style="width: 75%;">
+  		<div id="titulo" class="card-divider " >
+    		<div class="card-section">
+    			<p class="text-center">Gracias por su opinión {{usuario.nombre|capfirst}}.
+    			</p>
+    		</div>	
+  		</div>
+		<hr/>
+ 
+		<div style="margin:auto">
+		<a href="{% url 'Pdf' formularios.id_formulario %}"> 
+			<button class="button" style="background:#008080; border-radius:5px"><i class="fas fa-file-pdf"> </i>&nbsp;&nbsp;Generar un PDF</button>
+		</a>
+		<a>	
+			<button class="button " style="background:#008080; border-radius:5px">Firmar
+			</button>
+
+		</a>
+	</div>
+</div>
+
+
+{% endblock %}

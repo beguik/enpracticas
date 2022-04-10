@@ -36,7 +36,8 @@
 <div style="padding-left: 10%;">A continuación, recogemos el texto de su solicitud:</div>
 
 <div style="padding-top:5%; padding-left: 10%;padding-right: 10%"><i>"{{formularios.texto}}"</i></div>
-<div style="padding-top: 5%;padding-left: 10%;">Le agracecemos su solicitud, atentamente, con fecha {{formularios.created|date:'d-M-Y'}} </div>
+<div style="padding-top: 5%;padding-left: 10%;">Le agracecemos su solicitud. <br/>
+Aténtamente. <br/>{{formularios.created|date:'d-M-Y'}} </div>
 <div style="padding-top: 25%;float:right;"><img src="{% static 'media/logo_tangram.jpg'%}" style="width: 100px"/></div>
 </body>
 </html>

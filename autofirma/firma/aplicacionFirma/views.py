@@ -20,12 +20,13 @@ def home(request):
 			apellido2=datos['apellido2']
 			texto=datos['formulario']
 			if validarDni(dni):
+#Mas adelante habrá que filtrar dni para que no se registren dni con diferentes atributos y se machaquen los datos
+#primero preguntar a Emilio cual es el proceso. 
 				nuevo=Usuario(dni=dni,nombre=nombre, apellido1=apellido2, apellido2=apellido2)
 				nuevo.save()
 				Formulario.objects.create(texto=texto, usuario=nuevo)
 				usuario=Usuario.objects.get(dni=dni)
-				contador=Formulario.objects.count()
-				formularios=Formulario.objects.get(id_formulario=contador)			
+				formularios=Formulario.objects.latest('id_formulario')
 				return render(request,'datos.html',{'usuario':usuario, 'formularios':formularios})
 			else: 
 				
@@ -54,8 +55,7 @@ def formulario(request):
 				nuevo.save()
 				Formulario.objects.create(texto=texto, usuario=nuevo)
 				usuario=Usuario.objects.get(dni=dni)
-				contador=Formulario.objects.count()
-				formularios=Formulario.objects.get(id_formulario=contador)			
+				formularios=Formulario.objects.latest('id_formulario')			
 				return render(request,'datos.html',{'usuario':usuario, 'formularios':formularios})
 			else: 
 				
@@ -66,11 +66,6 @@ def formulario(request):
 
 
 	return render(request,"formulario.html",{"form":form},)
-
-
-#def datos(request):
-	
-#	return render(request,"datos.html")
 
 
 def exportarPdf(request,id):
@@ -89,10 +84,23 @@ def exportarPdf(request,id):
 	return response
 
 
+def confirmar(request, id):
 
+	formularios=Formulario.objects.get(id_formulario=id)
+	usuario=Usuario.objects.get(dni=formularios.usuario_id)	
 
+	return render(request,"confirmar.html",{"formularios":formularios, "usuario":usuario},)
 
+def eliminar(request, id):
+	formulario=Formulario.objects.get(id_formulario=id)
+	usuario=Usuario.objects.get(dni=formulario.usuario_id)
+	print('prueba')
+	if request.method=="POST":
+		print('entra')
+		formulario.delete()
+		return redirect('Inicio')
 
+	return render(request, "eliminar.html", {"formulario":formulario,"usuario":usuario})
 
 
 def validarDni(dni):
