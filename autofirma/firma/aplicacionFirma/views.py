@@ -22,7 +22,7 @@ def home(request):
 			if validarDni(dni):
 #Mas adelante habrá que filtrar dni para que no se registren dni con diferentes atributos y se machaquen los datos
 #primero preguntar a Emilio cual es el proceso. 
-				nuevo=Usuario(dni=dni,nombre=nombre, apellido1=apellido2, apellido2=apellido2)
+				nuevo=Usuario(dni=dni,nombre=nombre, apellido1=apellido1, apellido2=apellido2)
 				nuevo.save()
 				Formulario.objects.create(texto=texto, usuario=nuevo)
 				usuario=Usuario.objects.get(dni=dni)
